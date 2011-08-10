@@ -1,5 +1,5 @@
 <div class="right">
-    <?php echo $this->ajax('back', 'exercise/index', 2) ?>
+    <?php echo $this->ajax('back', 'activity/index', 2) ?>
 </div>
 <div class="activity">
 <?php echo $this->form?>
@@ -12,6 +12,5 @@
         });
         return false;
 	});
-    $('.date').datepicker();
-    $('input[type=button], input[type=submit]').button();
+    $('.date').mask('99/99/9999').datepicker();
 </script>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <name>Activity</name>
+    <description>Create and execute avaliations</description>
+    <author>Preceptor Educação a Distância</author>
+    <version>1.0</version>
+    <license>GPL 3</license>
+    <keywords>contexto, activity, text, revision</keywords>
+    <url>http://www.preceptoread.com.br</url>
+    
+    <files>
+        <sql>
+            <install>data/sql/install.sql</install>
+            <uninstall>data/sql/uninstall.sql</uninstall>
+        </sql>
+        <languages>
+            <language name="pt_BR">data/language/pt_BR/activity.csv</language>
+        </languages>
+    </files>
+    
+    <menus>
+        <menu type="tri_classroom_menu">
+            <item group="evaluation" resource="activity/index/index">activity</item>    
+        </menu>
+    </menus>
+    
+    <access>
+        <resource role="identified">activity/index/index</resource>
+        <resource role="teacher">activity/index/form</resource>
+        <resource role="teacher">activity/index/save</resource>
+        <resource role="identified">activity/index/view</resource>
+        <resource role="identified">activity/text/index</resource>
+        <resource role="identified">activity/text/save</resource>
+        <resource role="identified">activity/text/view</resource>
+        <resource role="teacher">activity/correct/index</resource>
+        <resource role="teacher">activity/correct/save</resource>
+    </access>
+</configuration>
