@@ -1,17 +1,8 @@
 <?php if($this->isAllowed('form')): ?>	
-	<div class="right"><?php echo $this->ajax("new", 'activity/index/form/', 2); ?></div>
+	<div class="aright"><?php echo $this->ajax("new", 'activity/index/form/', 2); ?></div>
 <?php endif; ?>	
-<div class="left">
-    <form id="formFindActivity" action="#">
-        <span class="ui-icon ui-icon-search magnifier"></span>
-        <input type="text" name="q" id="qActivity" style="width: 16em" />
-        <input type="submit" value="ok" /> &nbsp;&nbsp;&nbsp;
-    </form>
-</div>
-<div class="clear">&nbsp;</div>
-<br /><br />
 <?php if (count($this->data)):?>
-    <table class="datatable">
+    <table class="zebra-striped">
             <tr>
                 <th><?php echo $this->translate('Title')?></th>
                 <th><?php echo $this->translate('End')?></th>

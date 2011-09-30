@@ -10,7 +10,7 @@
 <div class="right" style="width: 25%">
     <?php if (count($this->data)):?>
         <h3><?php echo $this->translate('last versions')?></h3>
-        <table class="datatable">
+        <table class="zebra-striped">
                 <?php foreach ($this->data as $key => $data): ?>
                     <tr>
                         <td width="50">
@@ -52,7 +52,7 @@
                     ['Styles']
                 ],language: '<?php echo $locale?>'
             },
-            editor = CKEDITOR.appendTo('description-element', config, $text.val());
+            editor = CKEDITOR.appendTo('text-description-text-element', config, $text.val());
         $text.hide();
     }
 

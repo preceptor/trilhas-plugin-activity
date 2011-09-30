@@ -73,10 +73,12 @@ class Activity_Form_Text extends Zend_Form
             $saveDraft      = new Zend_Form_Element_Submit('saveDraft');
             $sendCorrection = new Zend_Form_Element_Submit('sendCorrection');
 
-            $saveDraft->removeDecorator('Label')
+            $saveDraft->setAttrib('class', 'btn')
+                      ->removeDecorator('Label')
                       ->removeDecorator('DtDdWrapper');
 
-            $sendCorrection->removeDecorator('Label')
+            $sendCorrection->setAttrib('class', 'btn')
+                           ->removeDecorator('Label')
                            ->removeDecorator('DtDdWrapper');
 
             $this->addElement($saveDraft)
@@ -85,14 +87,17 @@ class Activity_Form_Text extends Zend_Form
             $openButton = new Zend_Form_Element_Submit('openButton');
             $finalize   = new Zend_Form_Element_Submit('finalize');
 
-            $openButton->removeDecorator('Label')
+            $openButton->setAttrib('class', 'btn')
+                       ->removeDecorator('Label')
                        ->removeDecorator('DtDdWrapper');
 
-            $finalize->removeDecorator('Label')
+            $finalize->setAttrib('class', 'btn')
+                     ->removeDecorator('Label')
                      ->removeDecorator('DtDdWrapper');
 
             $note = new Zend_Form_Element_Text('note');
             $note->setLabel('Note')
+                 ->setAttrib('class', 'small')
                  ->addValidator('Int')
                  ->addFilter('Digits');
 

@@ -9,23 +9,12 @@ class Activity_IndexController extends Tri_Controller_Action
 
     public function indexAction()
     {
-        $session  = new Zend_Session_Namespace('data');
-        $table    = new Tri_Db_Table('activity');
-        $page     = Zend_Filter::filterStatic($this->_getParam('page'), 'int');
-        $query    = Zend_Filter::filterStatic($this->_getParam("q"), 'stripTags');
-        $select   = $table->select();
-
-        $select->where('classroom_id = ?', $session->classroom_id)
-               ->where('status = ?', 'active')
-               ->where('begin <= ?', date('Y-m-d'))
-               ->where('end IS NULL OR end > ?', date('Y-m-d'));
-
-        if ($query) {
-            $select->where('UPPER(title) LIKE UPPER(?)', "%$query%");
-        }
-
-        $paginator = new Tri_Paginator($select, $page);
-        $this->view->data = $paginator->getResult();
+        $session = new Zend_Session_Namespace('data');
+        $page    = Zend_Filter::filterStatic($this->_getParam('page'), 'int');
+        $query   = Zend_Filter::filterStatic($this->_getParam("q"), 'stripTags');
+        $model   = new Activity_Model_Activity();
+        
+        $this->view->data = $model->findByClassroom($session->classroom_id, $query, $page);
         $this->view->q = $query;
     }
 
@@ -74,7 +63,7 @@ class Activity_IndexController extends Tri_Controller_Action
             }
 
             $this->_helper->_flashMessenger->addMessage('Success');
-            $this->_redirect('activity/index/form/id/'.$id);
+            $this->_redirect('activity/index/');
         }
 
         $this->_helper->_flashMessenger->addMessage('Error');
